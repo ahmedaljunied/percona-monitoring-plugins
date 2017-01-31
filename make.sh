@@ -50,10 +50,10 @@ find release/ -name "*.pyc" -exec rm -f {} \;
 # directory.
 YEAR=$(date +%Y)
 for f in release/code/nagios/bin/pmp* release/docs/config/conf.py release/code/cacti/scripts/ss* release/code/cacti/definitions/*.def release/code/zabbix/scripts/* ; do
-   sed -i "s/\\\$PROJECT_NAME\\\$/$PROJECT_NAME/g" "$f"
-   sed -i "s/\\\$VERSION\\\$/$VERSION/g" "$f"
-   sed -i "s/\\\$CURRENT_YEAR\\\$/${YEAR}/g" "$f"
-   sed -i "s/${YEAR}-${YEAR}/${YEAR}/g" "$f"
+   sed -i "" "s/\\\$PROJECT_NAME\\\$/$PROJECT_NAME/g" "$f"
+   sed -i "" "s/\\\$VERSION\\\$/$VERSION/g" "$f"
+   sed -i "" "s/\\\$CURRENT_YEAR\\\$/${YEAR}/g" "$f"
+   sed -i "" "s/${YEAR}-${YEAR}/${YEAR}/g" "$f"
 done
 
 # Build the XML files for the Cacti templates.  Each XML file is built by
@@ -84,7 +84,7 @@ for file in release/code/cacti/definitions/*.def; do
    FILE="release/code/cacti/templates/cacti_host_template_percona_${NAME}_server_ht_0.8.6i-sver${VERSION}.xml"
    perl cacti/bin/pmp-cacti-template --script release/code/cacti/scripts/$SCRIPT "$file" > "${FILE}"
    MD5=$(_md5 "${FILE}")
-   sed -i "s/CUSTOMIZED_XML_TEMPLATE/${MD5}/" "${FILE}"
+   sed -i "" "s/CUSTOMIZED_XML_TEMPLATE/${MD5}/" "${FILE}"
 done
 
 # Generate Zabbix XML templates and agent configs
