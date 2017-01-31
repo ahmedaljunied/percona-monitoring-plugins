@@ -5,6 +5,8 @@ The Percona Monitoring Plugins are high-quality components to add enterprise-gra
 Project home page http://www.percona.com/software/percona-monitoring-plugins
 
 
----For mac
+For mac
+
 install wget w brew
+
 install sphinx using pip
